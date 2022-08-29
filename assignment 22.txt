@@ -1,0 +1,42 @@
+Ans=7
+int main()
+{
+    f1();
+}
+
+f1()
+{
+    int *p;
+    p=malloc(4);
+    *p=5;
+    // here function is normal terminate *p variable destroy but in program malloc function will not terminate and here this call memory leak in function
+}
+
+Ans=4
+int main()
+{
+    int *p;
+    p=(void *)malloc(sizeof(4));
+    printf("Enter number");
+    scanf("%d",p);
+    printf("\nYour malloc value => %d",*p);
+    return 0;
+}
+
+Ans=8
+int main()
+{
+    int *p;
+    p=fun();
+    *p=5; // locate unknown area point
+    return 0;
+}
+ int fun()
+ {
+     int a;
+     .....
+     ....
+     return &a; // a is a local variable destroy after finish function
+     
+ }
+
